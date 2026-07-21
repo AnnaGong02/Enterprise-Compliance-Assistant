@@ -31,4 +31,14 @@ describe('白皮书互动页', () => {
     await user.click(screen.getByRole('button', { name: /现场演示模式/ }))
     expect(screen.getByRole('dialog', { name: '问题展示' })).toBeInTheDocument()
   })
+
+  it('提供七个页面指引和前后翻页控制', () => {
+    render(<App />)
+    const navigator = screen.getByRole('navigation', { name: '页面章节导航' })
+    expect(navigator).toBeInTheDocument()
+    expect(screen.getByRole('link', { name: /01.*白皮书简介/ })).toHaveAttribute('href', '#overview')
+    expect(screen.getByRole('link', { name: /07.*再次扫码/ })).toHaveAttribute('href', '#qr-end')
+    expect(screen.getByRole('button', { name: '上一页' })).toBeDisabled()
+    expect(screen.getByRole('button', { name: '下一页' })).toBeEnabled()
+  })
 })

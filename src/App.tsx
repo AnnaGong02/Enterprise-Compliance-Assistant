@@ -4,6 +4,16 @@ import { siteConfig } from './config/site'
 
 function ArrowIcon() { return <span aria-hidden="true">↘</span> }
 
+const sectionLinks = [
+  { id: 'overview', no: '01', label: '白皮书简介' },
+  { id: 'chapters', no: '02', label: '七章框架' },
+  { id: 'ai-overview', no: '03', label: '决策过渡' },
+  { id: 'ai-assistant', no: '04', label: 'AI助手入口' },
+  { id: 'usage-guide', no: '05', label: '现场操作' },
+  { id: 'question-bank', no: '06', label: '提问库' },
+  { id: 'qr-end', no: '07', label: '再次扫码' },
+]
+
 function Hero() {
   return <header className="hero" id="top">
     <nav className="nav wrap"><a className="wordmark" href="#top"><i />解除合规指南</a><a href="#question-bank">现场提问库</a></nav>
@@ -59,13 +69,31 @@ function QuestionBank() {
 
 function SafeImage({ src, label }: { src: string; label: string }) { const [failed, setFailed] = useState(false); return <div className="image-frame">{!failed && <img src={src} alt={label} onError={() => setFailed(true)} />}{failed && <div className="image-placeholder"><span>IMAGE PLACEHOLDER</span><i>＋</i><p>【{label}】</p><small>{src.replace('/', '/public/')}</small></div>}</div> }
 
-function UsageGuide() { return <section className="section usage"><div className="wrap"><div className="section-head reveal"><div><p className="section-index">05 / 现场操作</p><h2>如何使用AI解雇SOP助手</h2></div><p>扫码进入后，三步完成风险识别</p></div><div className="usage-grid reveal">{siteConfig.usageImages.map((src, i) => <article key={src}><div className="step-top"><b>步骤 {String(i + 1).padStart(2, '0')}</b><span>0{i + 1}</span></div><h3>{siteConfig.usageTitles[i]}</h3><SafeImage src={src} label={siteConfig.usagePlaceholders[i]} /></article>)}</div></div></section> }
+function SectionNavigator() {
+  const [current, setCurrent] = useState(0)
+  const goTo = (index: number) => document.getElementById(sectionLinks[index].id)?.scrollIntoView({ behavior: window.matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth', block: 'start' })
+  useEffect(() => {
+    const elements = sectionLinks.map(item => document.getElementById(item.id)).filter((item): item is HTMLElement => Boolean(item))
+    const observer = new IntersectionObserver(entries => entries.forEach(entry => { if (entry.isIntersecting) { const index = sectionLinks.findIndex(item => item.id === entry.target.id); if (index >= 0) setCurrent(index) } }), { rootMargin: '-30% 0px -55%', threshold: 0 })
+    elements.forEach(element => observer.observe(element))
+    const onKeyDown = (event: KeyboardEvent) => {
+      if (event.defaultPrevented || ['INPUT', 'TEXTAREA', 'SELECT'].includes((event.target as HTMLElement).tagName)) return
+      if (event.key === 'ArrowRight' || event.key === 'ArrowDown') { event.preventDefault(); goTo(Math.min(current + 1, sectionLinks.length - 1)) }
+      if (event.key === 'ArrowLeft' || event.key === 'ArrowUp') { event.preventDefault(); goTo(Math.max(current - 1, 0)) }
+    }
+    window.addEventListener('keydown', onKeyDown)
+    return () => { observer.disconnect(); window.removeEventListener('keydown', onKeyDown) }
+  }, [current])
+  return <nav className="section-nav" aria-label="页面章节导航"><button className="nav-arrow" onClick={() => goTo(Math.max(current - 1, 0))} disabled={current === 0} aria-label="上一页">↑</button><div className="section-nav-links">{sectionLinks.map((item, index) => <a href={`#${item.id}`} className={current === index ? 'active' : ''} aria-current={current === index ? 'page' : undefined} key={item.id}><b>{item.no}</b><span>{item.label}</span></a>)}</div><button className="nav-arrow" onClick={() => goTo(Math.min(current + 1, sectionLinks.length - 1))} disabled={current === sectionLinks.length - 1} aria-label="下一页">↓</button></nav>
+}
 
-function QrCodeSection() { return <section className="qr-section"><div className="wrap qr-grid reveal"><div><p className="section-index light">07 / 再次扫码</p><h2>把合规工具与专业内容，<br />带回日常工作。</h2><p>保存入口，后续可随时使用AI助手或查看劳动用工专业内容。</p></div><div className="qr-cards">{siteConfig.qrCodes.map(item => <div className="qr-card" key={item.src}><SafeImage src={item.src} label={item.title} /><strong>{item.title}</strong><small>{item.description}</small></div>)}</div></div><p className="disclaimer wrap">AI助手提供的内容仅用于一般性法律信息及初步风险识别，不构成针对具体事项的正式法律意见。涉及具体员工处理时，请结合完整事实、证据及当地司法实践，由专业律师进一步复核。</p></section> }
+function UsageGuide() { return <section className="section usage" id="usage-guide"><div className="wrap"><div className="section-head reveal"><div><p className="section-index">05 / 现场操作</p><h2>如何使用AI解雇SOP助手</h2></div><p>扫码进入后，三步完成风险识别</p></div><div className="usage-grid reveal">{siteConfig.usageImages.map((src, i) => <article key={src}><div className="step-top"><b>步骤 {String(i + 1).padStart(2, '0')}</b><span>0{i + 1}</span></div><h3>{siteConfig.usageTitles[i]}</h3><SafeImage src={src} label={siteConfig.usagePlaceholders[i]} /></article>)}</div></div></section> }
+
+function QrCodeSection() { return <section className="qr-section" id="qr-end"><div className="wrap qr-grid reveal"><div><p className="section-index light">07 / 再次扫码</p><h2>把合规工具与专业内容，<br />带回日常工作。</h2><p>保存入口，后续可随时使用AI助手或查看劳动用工专业内容。</p></div><div className="qr-cards">{siteConfig.qrCodes.map(item => <div className="qr-card" key={item.src}><SafeImage src={item.src} label={item.title} /><strong>{item.title}</strong><small>{item.description}</small></div>)}</div></div><p className="disclaimer wrap">AI助手提供的内容仅用于一般性法律信息及初步风险识别，不构成针对具体事项的正式法律意见。涉及具体员工处理时，请结合完整事实、证据及当地司法实践，由专业律师进一步复核。</p></section> }
 
 function Footer() { return <footer><div className="wrap"><strong>企业劳动用工解除合规白皮书暨风险决策指南</strong><span>劳动与人力资源专业团队</span><a href="#top">返回顶部 ↑</a></div></footer> }
 
 export default function App() {
   useEffect(() => { const observer = new IntersectionObserver(entries => entries.forEach(entry => { if (entry.isIntersecting) { entry.target.classList.add('visible'); observer.unobserve(entry.target) } }), { threshold: .12 }); document.querySelectorAll('.reveal').forEach(el => observer.observe(el)); return () => observer.disconnect() }, [])
-  return <><Hero /><main><WhitepaperOverview /><ChapterMap /><AiTransition /><AiFeatures /><UsageGuide /><QuestionBank /><QrCodeSection /></main><Footer /></>
+  return <><Hero /><SectionNavigator /><main><WhitepaperOverview /><ChapterMap /><AiTransition /><AiFeatures /><UsageGuide /><QuestionBank /><QrCodeSection /></main><Footer /></>
 }
