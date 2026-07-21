@@ -8,6 +8,12 @@ beforeAll(() => { vi.stubGlobal('IntersectionObserver', class { observe() {} uno
 afterEach(cleanup)
 
 describe('白皮书互动页', () => {
+  it('体验AI助手按钮直接跳转到二维码入口', () => {
+    render(<App />)
+    expect(screen.getByRole('link', { name: /体验AI助手/ })).toHaveAttribute('href', '#ai-assistant')
+    expect(document.querySelector('#ai-assistant')).toHaveClass('qr-section')
+  })
+
   it('章节手风琴同一时间只展开一项', async () => {
     const user = userEvent.setup(); render(<App />)
     const second = screen.getByRole('button', { name: /试用期管理与解除实战/ })

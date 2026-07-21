@@ -29,7 +29,7 @@ function ChapterMap() {
 }
 
 function AiTransition() {
-  return <section className="ai-transition" id="ai-assistant"><div className="wrap reveal"><p className="section-index light">03 / 从知识到决策</p><div className="transition-grid"><div><h2>看到这里，大家可能已经有一点<br /><em>“信息过载”。</em></h2><p>白皮书提供的是完整的知识体系，但真正面对一名具体员工时，HR和管理人员往往需要在几分钟内判断：</p></div><ul><li>能不能解除？</li><li>现有证据够不够？</li><li>缺少哪些程序？</li><li>下一步应该做什么？</li></ul></div><p className="transition-note">为了让白皮书中的SOP和风险决策逻辑更加便捷地应用于日常管理，我们同步推出了配套的AI解雇SOP助手。</p><div className="stats"><div><strong>179<small>页</small></strong><span>专业内容<br />不必每次从头翻找</span></div><div><strong>01<small>次输入</small></strong><span>描述具体场景<br />快速完成初步风险识别</span></div></div></div></section>
+  return <section className="ai-transition" id="ai-overview"><div className="wrap reveal"><p className="section-index light">03 / 从知识到决策</p><div className="transition-grid"><div><h2>看到这里，大家可能已经有一点<br /><em>“信息过载”。</em></h2><p>白皮书提供的是完整的知识体系，但真正面对一名具体员工时，HR和管理人员往往需要在几分钟内判断：</p></div><ul><li>能不能解除？</li><li>现有证据够不够？</li><li>缺少哪些程序？</li><li>下一步应该做什么？</li></ul></div><p className="transition-note">为了让白皮书中的SOP和风险决策逻辑更加便捷地应用于日常管理，我们同步推出了配套的AI解雇SOP助手。</p><div className="stats"><div><strong>179<small>页</small></strong><span>专业内容<br />不必每次从头翻找</span></div><div><strong>01<small>次输入</small></strong><span>描述具体场景<br />快速完成初步风险识别</span></div></div></div></section>
 }
 
 function AiFeatures() {
@@ -60,7 +60,7 @@ function SafeImage({ src, label }: { src: string; label: string }) { const [fail
 
 function UsageGuide() { return <section className="section usage"><div className="wrap"><div className="section-head reveal"><div><p className="section-index">07 / 现场演示</p><h2>如何使用AI解雇SOP助手</h2></div><p>扫码进入后，三步完成风险识别</p></div><div className="usage-grid reveal">{siteConfig.usageImages.map((src, i) => <article key={src}><div className="step-top"><b>步骤 {String(i + 1).padStart(2, '0')}</b><span>0{i + 1}</span></div><h3>{siteConfig.usageTitles[i]}</h3><SafeImage src={src} label={siteConfig.usagePlaceholders[i]} /></article>)}</div></div></section> }
 
-function QrCodeSection() { return <section className="qr-section"><div className="wrap qr-grid reveal"><div><p className="section-index light">06 / 先扫码进入</p><h2>先进入公众号，<br />再跟随现场演示。</h2><p>选择适合你的入口，获取AI风险识别与持续专业内容。</p></div><div className="qr-cards">{siteConfig.qrCodes.map(item => <div className="qr-card" key={item.src}><SafeImage src={item.src} label={item.title} /><strong>{item.title}</strong><small>{item.description}</small></div>)}</div></div><p className="disclaimer wrap">AI助手提供的内容仅用于一般性法律信息及初步风险识别，不构成针对具体事项的正式法律意见。涉及具体员工处理时，请结合完整事实、证据及当地司法实践，由专业律师进一步复核。</p></section> }
+function QrCodeSection() { return <section className="qr-section" id="ai-assistant"><div className="wrap qr-grid reveal"><div><p className="section-index light">06 / 先扫码进入</p><h2>先进入公众号，<br />再跟随现场操作。</h2><p>选择适合你的入口，获取AI风险识别与持续专业内容。</p></div><div className="qr-cards">{siteConfig.qrCodes.map(item => <div className="qr-card" key={item.src}><SafeImage src={item.src} label={item.title} /><strong>{item.title}</strong><small>{item.description}</small></div>)}</div></div><p className="disclaimer wrap">AI助手提供的内容仅用于一般性法律信息及初步风险识别，不构成针对具体事项的正式法律意见。涉及具体员工处理时，请结合完整事实、证据及当地司法实践，由专业律师进一步复核。</p></section> }
 
 function Footer() { return <footer><div className="wrap"><strong>企业劳动用工解除合规白皮书暨风险决策指南</strong><span>劳动与人力资源专业团队</span><a href="#top">返回顶部 ↑</a></div></footer> }
 
