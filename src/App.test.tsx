@@ -11,7 +11,8 @@ describe('白皮书互动页', () => {
   it('体验AI助手按钮直接跳转到二维码入口', () => {
     render(<App />)
     expect(screen.getByRole('link', { name: /体验AI助手/ })).toHaveAttribute('href', '#ai-assistant')
-    expect(document.querySelector('#ai-assistant')).toHaveClass('qr-section')
+    expect(document.querySelector('#ai-assistant')).toHaveClass('feature-entry')
+    expect(document.querySelector('#ai-assistant img')).toHaveAttribute('alt', 'AI助手入口')
   })
 
   it('章节手风琴同一时间只展开一项', async () => {
