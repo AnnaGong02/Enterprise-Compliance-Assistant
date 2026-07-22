@@ -1,4 +1,9 @@
 export const siteConfig = {
+  authorImage: `${import.meta.env.BASE_URL}authors-introduction.png`,
+  whitepaper: {
+    pdf: `${import.meta.env.BASE_URL}employment-termination-compliance-whitepaper.pdf`,
+    cover: `${import.meta.env.BASE_URL}whitepaper-cover.png`,
+  },
   usageImages: ['usage-step-1.png', 'usage-step-2.png', 'usage-step-3.png'].map(file => `${import.meta.env.BASE_URL}${file}`),
   usageTitles: ['找到AI助手入口', '输入问题，查看风险提示', '阅读完整使用指南'],
   qrCodes: [

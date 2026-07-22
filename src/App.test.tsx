@@ -41,4 +41,22 @@ describe('白皮书互动页', () => {
     expect(screen.getByRole('button', { name: '上一页' })).toBeDisabled()
     expect(screen.getByRole('button', { name: '下一页' })).toBeEnabled()
   })
+
+  it('在七章框架前展示作者介绍', () => {
+    render(<App />)
+    const authorImage = screen.getByRole('img', { name: '白皮书作者介绍' })
+    const chapters = document.querySelector('#chapters')
+    const authorSection = authorImage.closest('section')
+    expect(authorImage).toHaveAttribute('src', expect.stringContaining('authors-introduction.png'))
+    expect(authorSection).not.toBeNull()
+    expect(authorSection!.compareDocumentPosition(chapters as Node) & Node.DOCUMENT_POSITION_FOLLOWING).toBeTruthy()
+  })
+
+  it('在03之前提供完整白皮书PDF链接和封面', () => {
+    render(<App />)
+    const pdfLinks = screen.getAllByRole('link', { name: /完整白皮书/ })
+    expect(pdfLinks).toHaveLength(2)
+    pdfLinks.forEach(link => expect(link).toHaveAttribute('href', expect.stringContaining('employment-termination-compliance-whitepaper.pdf')))
+    expect(screen.getByRole('img', { name: '企业劳动用工解除合规白皮书封面' })).toHaveAttribute('src', expect.stringContaining('whitepaper-cover.png'))
+  })
 })

@@ -33,9 +33,17 @@ function WhitepaperOverview() {
   return <section className="section overview reveal" id="overview"><div className="wrap overview-grid"><div><p className="section-index">01 / 白皮书简介</p><h2>辞退不是一个动作，<br />而是一条完整的合规链。</h2></div><div className="overview-copy"><p>劳动关系解除并不是一句简单的“辞退”，而是解除理由、事实证据、法定程序、文书内容及送达方式相互衔接的完整链条。</p><p>《企业劳动用工解除合规白皮书暨风险决策指南》围绕企业最常见的解除场景，通过法律红线、案例复盘、标准化SOP、风险决策树及配套文书，为企业提供从风险识别到落地执行的系统解决方案。</p></div></div><div className="keyword-row wrap">{keywords.map((item, i) => <div key={item}><b>0{i + 1}</b><span>{item}</span></div>)}</div></section>
 }
 
+function AuthorIntroduction() {
+  return <section className="section authors" aria-labelledby="authors-title"><div className="wrap authors-layout"><div className="authors-copy reveal"><p className="section-index">作者介绍</p><h2 id="authors-title">专业团队，<br />共同完成。</h2><p>《企业劳动用工解除合规白皮书暨风险决策指南》由劳动与人力资源专业团队共同编写。</p></div><figure className="authors-image reveal"><SafeImage src={siteConfig.authorImage} label="白皮书作者介绍" /><figcaption>作者按写作章节排序</figcaption></figure></div></section>
+}
+
 function ChapterMap() {
   const [open, setOpen] = useState(0)
   return <section className="section chapters" id="chapters"><div className="wrap"><div className="section-head reveal"><div><p className="section-index">02 / 七章框架</p><h2>从决策起点，到程序落地</h2></div><p>点击章节，查看完整专题与配套文书</p></div><div className="chapter-list reveal">{chapters.map((chapter, index) => { const active = open === index; return <article className={`chapter ${active ? 'active' : ''}`} key={chapter.id}><button aria-expanded={active} onClick={() => setOpen(active ? -1 : index)}><span className="chapter-no">{chapter.number}</span><span className="chapter-short">{chapter.short}</span><strong>{chapter.title}</strong><span className="toggle">{active ? '−' : '+'}</span></button><div className="chapter-detail"><div><p className="chapter-summary">{chapter.description}</p><div className="outline-block"><span className="outline-label">核心专题</span><ol>{chapter.sections.map((item, itemIndex) => <li key={item}><b>{String(itemIndex + 1).padStart(2, '0')}</b><span>{item}</span></li>)}</ol></div><div className="outline-block attachments"><span className="outline-label">配套文书</span><ul>{chapter.attachments.map(item => <li key={item}><i>DOC</i><span>{item}</span></li>)}</ul></div><div className="tags"><span>法律红线</span><span>标准化SOP</span><span>风险决策树</span></div></div></div></article>})}</div></div></section>
+}
+
+function WhitepaperReader() {
+  return <section className="section whitepaper-reader" aria-labelledby="reader-title"><div className="wrap reader-layout"><a className="reader-cover reveal" href={siteConfig.whitepaper.pdf} target="_blank" rel="noreferrer" aria-label="打开完整白皮书PDF"><SafeImage src={siteConfig.whitepaper.cover} label="企业劳动用工解除合规白皮书封面" /><span>PDF · 83页</span></a><div className="reader-copy reveal"><p className="section-index">完整白皮书</p><h2 id="reader-title">在线阅读<br />完整PDF版本</h2><p>点击封面或下方按钮，即可在浏览器中直接查看《企业劳动用工解除合规白皮书暨风险决策指南》。</p><a className="button primary" href={siteConfig.whitepaper.pdf} target="_blank" rel="noreferrer">打开完整白皮书 <ArrowIcon /></a><small>PDF 文件将在新窗口打开，亦可使用浏览器下载或保存。</small></div></div></section>
 }
 
 function AiTransition() {
@@ -95,5 +103,5 @@ function Footer() { return <footer><div className="wrap"><strong>企业劳动用
 
 export default function App() {
   useEffect(() => { const observer = new IntersectionObserver(entries => entries.forEach(entry => { if (entry.isIntersecting) { entry.target.classList.add('visible'); observer.unobserve(entry.target) } }), { threshold: .12 }); document.querySelectorAll('.reveal').forEach(el => observer.observe(el)); return () => observer.disconnect() }, [])
-  return <><Hero /><SectionNavigator /><main><WhitepaperOverview /><ChapterMap /><AiTransition /><AiFeatures /><UsageGuide /><QuestionBank /><QrCodeSection /></main><Footer /></>
+  return <><Hero /><SectionNavigator /><main><WhitepaperOverview /><AuthorIntroduction /><ChapterMap /><WhitepaperReader /><AiTransition /><AiFeatures /><UsageGuide /><QuestionBank /><QrCodeSection /></main><Footer /></>
 }
