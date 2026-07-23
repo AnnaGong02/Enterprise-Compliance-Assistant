@@ -20,7 +20,7 @@ function Hero() {
     <div className="hero-graphic" aria-hidden="true"><i className="node n1" /><i className="node n2" /><i className="node n3" /><i className="line l1" /><i className="line l2" /></div>
     <div className="hero-content wrap reveal">
       <p className="eyebrow">EMPLOYMENT TERMINATION COMPLIANCE · 2026</p>
-      <h1>企业劳动用工解除合规白皮书<br /><span>暨风险决策指南</span></h1>
+      <h1><span className="hero-title-main">从解雇合规SOP到法律AI：</span><br />智能化用工风险管理的实践与落地<br /><span className="hero-title-event">——暨《企业劳动用工解除合规白皮书暨风险决策指南》宣讲会</span></h1>
       <p className="hero-lead">从解除路径选择、证据固定到程序履行，<br />将高风险用工决策转化为可执行的SOP与风险判断。</p>
       <div className="hero-actions"><a className="button primary" href="#chapters">查看白皮书框架 <ArrowIcon /></a><a className="button secondary" href="#ai-assistant">体验AI助手 <ArrowIcon /></a></div>
     </div>

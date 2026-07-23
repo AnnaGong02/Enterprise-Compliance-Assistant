@@ -8,6 +8,11 @@ beforeAll(() => { vi.stubGlobal('IntersectionObserver', class { observe() {} uno
 afterEach(cleanup)
 
 describe('白皮书互动页', () => {
+  it('展示最新宣讲会标题', () => {
+    render(<App />)
+    expect(screen.getByRole('heading', { level: 1 })).toHaveTextContent('从解雇合规SOP到法律AI：智能化用工风险管理的实践与落地——暨《企业劳动用工解除合规白皮书暨风险决策指南》宣讲会')
+  })
+
   it('体验AI助手按钮直接跳转到二维码入口', () => {
     render(<App />)
     expect(screen.getByRole('link', { name: /体验AI助手/ })).toHaveAttribute('href', '#ai-assistant')
