@@ -6,10 +6,12 @@ function ArrowIcon() { return <span aria-hidden="true">↘</span> }
 
 const sectionLinks = [
   { id: 'overview', no: '01', label: '白皮书简介' },
+  { id: 'authors', no: '•', label: '作者介绍' },
   { id: 'chapters', no: '02', label: '七章框架' },
-  { id: 'ai-overview', no: '03', label: '决策过渡' },
-  { id: 'ai-assistant', no: '04', label: 'AI助手入口' },
-  { id: 'usage-guide', no: '05', label: '现场操作' },
+  { id: 'whitepaper-reader', no: '•', label: '阅读白皮书' },
+  { id: 'ai-overview', no: '03', label: 'AI流程导入' },
+  { id: 'ai-assistant', no: '04', label: 'AI助手介绍' },
+  { id: 'usage-guide', no: '05', label: 'AI SOP操作' },
   { id: 'question-bank', no: '06', label: '提问库' },
   { id: 'qr-end', no: '07', label: '再次扫码' },
 ]
@@ -34,7 +36,7 @@ function WhitepaperOverview() {
 }
 
 function AuthorIntroduction() {
-  return <section className="section authors" aria-labelledby="authors-title"><div className="wrap authors-layout"><div className="authors-copy reveal"><p className="section-index">作者介绍</p><h2 id="authors-title">专业团队，<br />共同完成。</h2><p>《企业劳动用工解除合规白皮书暨风险决策指南》由劳动与人力资源专业团队共同编写。</p></div><figure className="authors-image reveal"><SafeImage src={siteConfig.authorImage} label="白皮书作者介绍" /><figcaption>作者按写作章节排序</figcaption></figure></div></section>
+  return <section className="section authors" id="authors" aria-labelledby="authors-title"><div className="wrap authors-layout"><div className="authors-copy reveal"><p className="section-index">作者介绍</p><h2 id="authors-title">专业团队，<br />共同完成。</h2><p>《企业劳动用工解除合规白皮书暨风险决策指南》由劳动与人力资源专业团队共同编写。</p></div><figure className="authors-image reveal"><SafeImage src={siteConfig.authorImage} label="白皮书作者介绍" /><figcaption>作者按写作章节排序</figcaption></figure></div></section>
 }
 
 function ChapterMap() {
@@ -43,7 +45,7 @@ function ChapterMap() {
 }
 
 function WhitepaperReader() {
-  return <section className="section whitepaper-reader" aria-labelledby="reader-title"><div className="wrap reader-layout"><a className="reader-cover reveal" href={siteConfig.whitepaper.pdf} target="_blank" rel="noreferrer" aria-label="打开完整白皮书PDF"><SafeImage src={siteConfig.whitepaper.cover} label="企业劳动用工解除合规白皮书封面" /><span>PDF · 83页</span></a><div className="reader-copy reveal"><p className="section-index">完整白皮书</p><h2 id="reader-title">在线阅读<br />完整PDF版本</h2><p>点击封面或下方按钮，即可在浏览器中直接查看《企业劳动用工解除合规白皮书暨风险决策指南》。</p><a className="button primary" href={siteConfig.whitepaper.pdf} target="_blank" rel="noreferrer">打开完整白皮书 <ArrowIcon /></a><small>PDF 文件将在新窗口打开，亦可使用浏览器下载或保存。</small></div></div></section>
+  return <section className="section whitepaper-reader" id="whitepaper-reader" aria-labelledby="reader-title"><div className="wrap reader-layout"><a className="reader-cover reveal" href={siteConfig.whitepaper.pdf} target="_blank" rel="noreferrer" aria-label="打开完整白皮书PDF"><SafeImage src={siteConfig.whitepaper.cover} label="企业劳动用工解除合规白皮书封面" /><span>PDF · 83页</span></a><div className="reader-copy reveal"><p className="section-index">完整白皮书</p><h2 id="reader-title">在线阅读<br />完整PDF版本</h2><p>点击封面或下方按钮，即可在浏览器中直接查看《企业劳动用工解除合规白皮书暨风险决策指南》。</p><a className="button primary" href={siteConfig.whitepaper.pdf} target="_blank" rel="noreferrer">打开完整白皮书 <ArrowIcon /></a><small>PDF 文件将在新窗口打开，亦可使用浏览器下载或保存。</small></div></div></section>
 }
 
 function AiTransition() {
