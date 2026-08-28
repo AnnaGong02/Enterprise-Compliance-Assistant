@@ -22,7 +22,7 @@ function Hero() {
     <div className="hero-graphic" aria-hidden="true"><i className="node n1" /><i className="node n2" /><i className="node n3" /><i className="line l1" /><i className="line l2" /></div>
     <div className="hero-content wrap reveal">
       <p className="eyebrow">EMPLOYMENT TERMINATION COMPLIANCE · 2026</p>
-      <h1><span className="hero-title-main">从解雇合规SOP到法律AI：</span><br />智能化用工风险管理的实践与落地<br /><span className="hero-title-event">——暨《企业劳动用工解除合规白皮书暨风险决策指南》宣讲会</span></h1>
+      <h1><span className="hero-title-main">解除不只是法律判断</span><br /><span className="hero-title-event">——《企业劳动用工解除合规白皮书暨风险决策指南》发布与解读</span></h1>
       <p className="hero-lead">从解除路径选择、证据固定到程序履行，<br />将高风险用工决策转化为可执行的SOP与风险判断。</p>
       <div className="hero-actions"><a className="button primary" href="#chapters">查看白皮书框架 <ArrowIcon /></a><a className="button secondary" href="#ai-assistant">体验AI助手 <ArrowIcon /></a></div>
     </div>
@@ -45,7 +45,7 @@ function ChapterMap() {
 }
 
 function WhitepaperReader() {
-  return <section className="section whitepaper-reader" id="whitepaper-reader" aria-labelledby="reader-title"><div className="wrap reader-layout"><a className="reader-cover reveal" href={siteConfig.whitepaper.pdf} target="_blank" rel="noreferrer" aria-label="打开完整白皮书PDF"><SafeImage src={siteConfig.whitepaper.cover} label="企业劳动用工解除合规白皮书封面" /><span>PDF · 83页</span></a><div className="reader-copy reveal"><p className="section-index">完整白皮书</p><h2 id="reader-title">在线阅读<br />完整PDF版本</h2><p>点击封面或下方按钮，即可在浏览器中直接查看《企业劳动用工解除合规白皮书暨风险决策指南》。</p><a className="button primary" href={siteConfig.whitepaper.pdf} target="_blank" rel="noreferrer">打开完整白皮书 <ArrowIcon /></a><small>PDF 文件将在新窗口打开，亦可使用浏览器下载或保存。</small></div></div></section>
+  return <section className="section whitepaper-reader" id="whitepaper-reader" aria-labelledby="reader-title"><div className="wrap reader-layout"><a className="reader-cover reveal" href={siteConfig.whitepaper.pdf} target="_blank" rel="noreferrer" aria-label="打开完整白皮书PDF"><SafeImage src={siteConfig.whitepaper.cover} label="企业劳动用工解除合规白皮书封面" /><span>PDF · 84页</span></a><div className="reader-copy reveal"><p className="section-index">完整白皮书</p><h2 id="reader-title">在线阅读<br />完整PDF版本</h2><p>点击封面或下方按钮，即可在浏览器中直接查看《企业劳动用工解除合规白皮书暨风险决策指南》。</p><a className="button primary" href={siteConfig.whitepaper.pdf} target="_blank" rel="noreferrer">打开完整白皮书 <ArrowIcon /></a><small>PDF 文件将在新窗口打开，亦可使用浏览器下载或保存。</small></div></div></section>
 }
 
 function AiTransition() {

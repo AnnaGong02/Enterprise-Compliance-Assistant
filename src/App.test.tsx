@@ -8,9 +8,9 @@ beforeAll(() => { vi.stubGlobal('IntersectionObserver', class { observe() {} uno
 afterEach(cleanup)
 
 describe('白皮书互动页', () => {
-  it('展示最新宣讲会标题', () => {
+  it('展示最新发布与解读标题', () => {
     render(<App />)
-    expect(screen.getByRole('heading', { level: 1 })).toHaveTextContent('从解雇合规SOP到法律AI：智能化用工风险管理的实践与落地——暨《企业劳动用工解除合规白皮书暨风险决策指南》宣讲会')
+    expect(screen.getByRole('heading', { level: 1 })).toHaveTextContent('解除不只是法律判断——《企业劳动用工解除合规白皮书暨风险决策指南》发布与解读')
   })
 
   it('体验AI助手按钮直接跳转到二维码入口', () => {
@@ -66,5 +66,6 @@ describe('白皮书互动页', () => {
     expect(pdfLinks).toHaveLength(2)
     pdfLinks.forEach(link => expect(link).toHaveAttribute('href', expect.stringContaining('employment-termination-compliance-whitepaper.pdf')))
     expect(screen.getByRole('img', { name: '企业劳动用工解除合规白皮书封面' })).toHaveAttribute('src', expect.stringContaining('whitepaper-cover.png'))
+    expect(screen.getByText('PDF · 84页')).toBeInTheDocument()
   })
 })
