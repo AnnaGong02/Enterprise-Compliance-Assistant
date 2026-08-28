@@ -18,7 +18,7 @@ const sectionLinks = [
 
 function Hero() {
   return <header className="hero" id="top">
-    <nav className="nav wrap"><a className="wordmark" href="#top"><i />解除合规指南</a><a href="#question-bank">现场提问库</a></nav>
+    <nav className="nav wrap"><a className="wordmark" href="#top" aria-label="大成律师事务所 · 返回首页"><span className="wordmark-cn">大成</span><span className="wordmark-en">DENTONS</span><small>劳动与人力资源专业团队</small></a><a href="#question-bank">现场提问库</a></nav>
     <div className="hero-graphic" aria-hidden="true"><i className="node n1" /><i className="node n2" /><i className="node n3" /><i className="line l1" /><i className="line l2" /></div>
     <div className="hero-content wrap reveal">
       <p className="eyebrow">EMPLOYMENT TERMINATION COMPLIANCE · 2026</p>
@@ -101,7 +101,7 @@ function UsageGuide() { return <section className="section usage" id="usage-guid
 
 function QrCodeSection() { return <section className="qr-section" id="qr-end"><div className="wrap qr-grid reveal"><div><p className="section-index light">07 / 再次扫码</p><h2>把合规工具与专业内容，<br />带回日常工作。</h2><p>保存入口，后续可随时使用AI助手或查看劳动用工专业内容。</p></div><div className="qr-cards">{siteConfig.qrCodes.map(item => <div className="qr-card" key={item.src}><SafeImage src={item.src} label={item.title} /><strong>{item.title}</strong><small>{item.description}</small></div>)}</div></div><p className="disclaimer wrap">AI助手提供的内容仅用于一般性法律信息及初步风险识别，不构成针对具体事项的正式法律意见。涉及具体员工处理时，请结合完整事实、证据及当地司法实践，由专业律师进一步复核。</p></section> }
 
-function Footer() { return <footer><div className="wrap"><strong>企业劳动用工解除合规白皮书暨风险决策指南</strong><span>劳动与人力资源专业团队</span><a href="#top">返回顶部 ↑</a></div></footer> }
+function Footer() { return <footer><div className="wrap"><div className="footer-brand"><b>大成</b><span>DENTONS</span></div><strong>企业劳动用工解除合规白皮书暨风险决策指南</strong><span>劳动与人力资源专业团队</span><a href="#top">返回顶部 ↑</a></div></footer> }
 
 export default function App() {
   useEffect(() => { const observer = new IntersectionObserver(entries => entries.forEach(entry => { if (entry.isIntersecting) { entry.target.classList.add('visible'); observer.unobserve(entry.target) } }), { threshold: .12 }); document.querySelectorAll('.reveal').forEach(el => observer.observe(el)); return () => observer.disconnect() }, [])
