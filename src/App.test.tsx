@@ -11,7 +11,9 @@ describe('白皮书互动页', () => {
   it('展示最新发布与解读标题', () => {
     render(<App />)
     expect(screen.getByRole('heading', { level: 1 })).toHaveTextContent('解除不只是法律判断——《企业劳动用工解除合规白皮书暨风险决策指南》发布与解读')
-    expect(screen.getByRole('link', { name: '大成律师事务所 · 返回首页' })).toHaveTextContent('大成DENTONS')
+    const brand = screen.getByRole('link', { name: '大成 DENTONS · 返回首页' })
+    expect(brand).toHaveTextContent('大成DENTONS')
+    expect(brand).toHaveTextContent('大成 is Dentons’ Preferred Law Firm in China.')
   })
 
   it('体验AI助手按钮直接跳转到二维码入口', () => {

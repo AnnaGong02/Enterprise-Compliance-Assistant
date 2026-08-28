@@ -18,7 +18,7 @@ const sectionLinks = [
 
 function Hero() {
   return <header className="hero" id="top">
-    <nav className="nav wrap"><a className="wordmark" href="#top" aria-label="大成律师事务所 · 返回首页"><span className="wordmark-cn">大成</span><span className="wordmark-en">DENTONS</span><small>劳动与人力资源专业团队</small></a><a href="#question-bank">现场提问库</a></nav>
+    <nav className="nav wrap"><a className="wordmark" href="#top" aria-label="大成 DENTONS · 返回首页"><span className="wordmark-badge"><span className="wordmark-cn">大成</span><span className="wordmark-en">DENTONS</span></span><small>大成 is Dentons’ Preferred Law Firm in China.</small></a><a href="#question-bank">现场提问库</a></nav>
     <div className="hero-graphic" aria-hidden="true"><i className="node n1" /><i className="node n2" /><i className="node n3" /><i className="line l1" /><i className="line l2" /></div>
     <div className="hero-content wrap reveal">
       <p className="eyebrow">EMPLOYMENT TERMINATION COMPLIANCE · 2026</p>
